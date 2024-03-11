@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="hraei.png" type="image/png">
+    <title>Hospital Regional - Urgencias Médicas</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="hraei.png" alt="HRAEI Logo" class="logo">
+            <h1>Hospital Regional de Alta Especialidad</h1>
+            <p>Atención médica urgente y de calidad</p>
+        </header>
+
+        <section class="urgencias-info">
+            <h2>Información de Urgencias Médicas</h2>
+            <p>Número de camas disponibles: <?php echo obtenerCamasDisponibles(); ?></p>
+        </section>
+
+        <section class="pacientes-espera">
+            <h2>Lista de Pacientes en Espera</h2>
+            <ul>
+                <?php
+                $pacientesEnEspera = obtenerPacientesEnEspera();
+                foreach ($pacientesEnEspera as $paciente) {
+                    echo "<li>$paciente</li>";
+                }
+                ?>
+            </ul>
+        </section>
+
+        <section class="registro-pacientes">
+            <h2>Registro de Pacientes</h2>
+            <form action="registrar_paciente.php" method="post">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" name="nombre" required>
+
+                <label for="edad">Edad:</label>
+                <input type="number" name="edad" required>
+
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
